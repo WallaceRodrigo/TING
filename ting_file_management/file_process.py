@@ -29,7 +29,7 @@ def remove(instance):
         instance.dequeue()
 
         return print(
-            f'Arquivo {arquive_name} removido com sucesso',
+            f"Arquivo {arquive_name} removido com sucesso",
             file=sys.stdout,
         )
     except IndexError:
@@ -37,4 +37,9 @@ def remove(instance):
 
 
 def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+    try:
+        arquive = instance.search(position)
+
+        return print(arquive, file=sys.stdout)
+    except IndexError:
+        return print("Posição inválida", file=sys.stderr)
